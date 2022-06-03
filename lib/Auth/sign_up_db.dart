@@ -1,10 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Auth/sign_in.dart';
-import 'package:navigation_bar/pages/foodnerve/foodnerve.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+ 
+  const SignUp({Key? key, }) : super(key: key);
 
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final controllerLastName = TextEditingController();
+  final controllerFirstName = TextEditingController();
+  final controllerEmail = TextEditingController();
+  final controllerPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,14 +21,14 @@ class SignUp extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(200, 0, 230, 30),
             child: Text(
               'Create Account',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(60, 0, 230, 0),
             child: Text(
               'First Name',
@@ -27,24 +36,24 @@ class SignUp extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(615, 5, 615, 0),
+            padding: const EdgeInsets.fromLTRB(615, 5, 615, 0),
             child: TextField(
+              controller: controllerFirstName,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[150],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(30.0),
                     )),
-                // hintText: 'Enter your email',
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(60, 0, 230, 0),
             child: Text(
               'Last Name',
@@ -52,27 +61,27 @@ class SignUp extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(615, 5, 615, 0),
+            padding: const EdgeInsets.fromLTRB(615, 5, 615, 0),
             child: TextField(
+              controller: controllerLastName,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[150],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(30.0),
                     )),
-                // hintText: 'Enter your email',
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(60, 0, 230, 0),
             child: Text(
               'Email Address',
@@ -80,24 +89,24 @@ class SignUp extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(615, 5, 615, 0),
+            padding: const EdgeInsets.fromLTRB(615, 5, 615, 0),
             child: TextField(
+              controller: controllerEmail,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[150],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(30.0),
                     )),
-                // hintText: 'Enter your email',
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(60, 0, 230, 0),
             child: Text(
               'Password',
@@ -105,21 +114,22 @@ class SignUp extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(615, 5, 615, 0),
+            padding: const EdgeInsets.fromLTRB(615, 5, 615, 0),
             child: TextField(
+              controller: controllerPassword,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.grey[150],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(30.0),
                     )),
                 // hintText: 'Enter your email',
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           SizedBox(
@@ -127,44 +137,49 @@ class SignUp extends StatelessWidget {
             width: 300,
             child: TextButton(
               style: TextButton.styleFrom(
-                shape: StadiumBorder(),
+                shape: const StadiumBorder(),
                 textStyle: const TextStyle(fontSize: 16),
                 primary: Colors.white,
                 backgroundColor: Colors.blue[800],
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FoodNerveHome()),
-                );
+                final firstName = controllerFirstName.text;
+                final lastName = controllerLastName.text;
+                final email = controllerEmail.text;
+                final password = controllerPassword.text;
+                createUser(
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password);
               },
               child: const Text('CREATE ACCOUNT'),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Container(
               height: 1.0,
               width: 65.0,
               color: Colors.black,
             ),
           ),
-          Text(
+          const Text(
             'OR',
             style: TextStyle(color: Colors.black, fontSize: 20),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Container(
               height: 1.0,
               width: 65.0,
               color: Colors.black,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           SizedBox(
@@ -172,16 +187,16 @@ class SignUp extends StatelessWidget {
             width: 300,
             child: TextButton(
               style: TextButton.styleFrom(
-                shape: StadiumBorder(),
+                shape: const StadiumBorder(),
                 textStyle: const TextStyle(fontSize: 12),
                 primary: Colors.white,
                 backgroundColor: Colors.blue[800],
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignIn()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const SignIn()),
+                // );
               },
               child: const Text('ALREADY HAVE AN ACCOUNT? SIGN IN'),
             ),
@@ -190,4 +205,44 @@ class SignUp extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> createUser({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+  }) async {
+    final docUser = FirebaseFirestore.instance.collection('users').doc();
+    final user = MyUser(
+        id: docUser.id,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password);
+    final json = user.toJson();
+    await docUser.set(json);
+  }
+}
+
+class MyUser {
+  String id;
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+
+  MyUser({
+    this.id = '',
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
+  });
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'password': password,
+      };
 }

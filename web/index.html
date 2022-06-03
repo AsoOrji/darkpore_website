@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-
+  <meta name="google-signin-client_id" content="938057517280-0o5q83f3grkkbj06a0m05gqem9ip2g2d.apps.googleusercontent.com">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -32,6 +32,27 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcUtmMkhQkUioODeXSdreCnAyZ-H8Tlq4",
+    authDomain: "darkpore-799a0.firebaseapp.com",
+    projectId: "darkpore-799a0",
+    storageBucket: "darkpore-799a0.appspot.com",
+    messagingSenderId: "938057517280",
+    appId: "1:938057517280:web:14d908781293487d79a885",
+    measurementId: "G-X8NV1XMFT5"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
