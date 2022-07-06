@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Auth/Google/google_sign_in.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:navigation_bar/Auth/sign_in.dart';
-import 'package:navigation_bar/Pages/HomePage/home_main.dart';
-import 'package:provider/provider.dart';
+import 'package:navigation_bar/sections/header.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +17,6 @@ Future main() async {
           measurementId: "G-X8NV1XMFT5"));
   runApp(const MyApp());
 }
-// void main() => runApp(const MyApp());
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -27,11 +24,18 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => GoogleSignInProvider(),
-      child: MaterialApp(
-          navigatorKey: navigatorKey, title: 'DMA', home: const MainPage()));
-  // home: MAinPage()));
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        navigatorKey: navigatorKey,
+        title: 'Darkpore',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFFEFEFEF),
+          fontFamily: GoogleFonts.kanit().fontFamily,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const MainPage());
+  }
 }
 
 class MainPage extends StatelessWidget {
@@ -43,16 +47,8 @@ class MainPage extends StatelessWidget {
         body: StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        return const HomeMain();
-        // if (snapshot.connectionState == ConnectionState.waiting) {
-        //   return const Center(child: CircularProgressIndicator());
-        // } else if (snapshot.hasData) {
-        //   return const HomeMain();
-        // } else if (snapshot.hasError) {
-        //   return const Center(child: Text('Something Went Wrong!'));
-        // } else {
-        //   return const SignIn();
-        // }
+        // return const CareerMain();
+        return const Header();
       },
     ));
   }

@@ -1,55 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:navigation_bar/Auth/Google/foodnerve.dart';
-import 'package:navigation_bar/Pages/GraphicNovelPage/graphic_novel_main.dart';
+import 'package:navigation_bar/Pages/Energy/energy_main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-class Home3 extends StatelessWidget {
+class Home3 extends StatefulWidget {
   const Home3({Key? key}) : super(key: key);
 
   @override
+  _Home3State createState() => _Home3State();
+}
+
+class _Home3State extends State<Home3> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 760,
-        padding: const EdgeInsets.only(top: 0),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-            image: AssetImage('assets/hope.jpg'),
-            fit: BoxFit.cover,
+    var screenSize = MediaQuery.of(context).size;
+    return Stack(
+      children: [
+        SizedBox(
+          height: screenSize.height,
+          width: screenSize.width,
+          child: FutureBuilder(
+            future: FireStoreDataBase().getData(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Text(
+                  "Something went wrong",
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Image.network(
+                  snapshot.data.toString(),
+                  // fit: BoxFit.cover,
+                );
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
           ),
         ),
-        child: Column(
+        Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RichText(
-                text: const TextSpan(
-                    text: 'Graphic Novel\n',
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                    children: [
-                  TextSpan(
-                    text: '   We\'re Driving',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w100,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' Cultural Change',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w100,
-                    ),
-                  ),
-                ])),
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 50,
+              ),
+              // child: RichText(
+              //     textAlign: TextAlign.center,
+              //     text: const TextSpan(
+              //         text: 'Graphic Novel\n',
+              //         style: TextStyle(
+              //             fontSize: 40,
+              //             color: Colors.black,
+              //             fontWeight: FontWeight.w600),
+              //         children: [
+              //           TextSpan(
+              //             text: 'We\'re Driving ',
+              //             style: TextStyle(
+              //               fontSize: 17,
+              //               color: Colors.black,
+              //               fontWeight: FontWeight.w100,
+              //             ),
+              //           ),
+              //           TextSpan(
+              //             text: 'Cultural Change',
+              //             style: TextStyle(
+              //               fontSize: 17,
+              //               color: Colors.black,
+              //               fontWeight: FontWeight.w100,
+              //               decoration: TextDecoration.underline,
+              //             ),
+              //           ),
+              //         ])),
+            ),
             Padding(
                 padding: const EdgeInsets.only(
-                  top: 500,
+                  top: 550,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -68,11 +93,11 @@ class Home3 extends StatelessWidget {
                             primary: Colors.white,
                             backgroundColor: Colors.black),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const GraphicNovelMain()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => const EnergyMain()),
+                          // );
                         },
                         child: Text(
                           'LEARN MORE',
@@ -83,6 +108,32 @@ class Home3 extends StatelessWidget {
                   ],
                 )),
           ],
-        ));
+        )
+      ],
+    );
+  }
+}
+
+class FireStoreDataBase {
+  String? downloadURL;
+
+  Future getData() async {
+    try {
+      await downloadURLExample();
+      return downloadURL;
+    } catch (e) {
+      debugPrint("Error - $e");
+      return null;
+    }
+  }
+
+  Future<void> downloadURLExample() async {
+    downloadURL = await FirebaseStorage.instance
+        .ref()
+        .child(
+          "page_images/gnovel.jpg",
+        )
+        .getDownloadURL();
+    debugPrint(downloadURL.toString());
   }
 }

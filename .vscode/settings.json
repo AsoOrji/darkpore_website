@@ -3,5 +3,6 @@
     
         "configurations": [],
         "compounds": []
-    }
+    },
+    "dart.flutterWebRenderer": "html"
 }

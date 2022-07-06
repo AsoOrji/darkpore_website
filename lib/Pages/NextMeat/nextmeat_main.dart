@@ -1,32 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Pages/HomePage/home1.dart';
-import 'package:navigation_bar/Pages/HomePage/home2.dart';
-import 'package:navigation_bar/Pages/HomePage/home3.dart';
-import 'package:navigation_bar/Pages/HomePage/home4.dart';
-import 'package:navigation_bar/sections/footer.dart';
-import 'package:navigation_bar/sections/header.dart';
 import 'package:navigation_bar/sections/float_button.dart';
 
-// ignore: camel_case_types
 class NextMeatMain extends StatelessWidget {
   const NextMeatMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
-        Header(),
-        Container(
-          height: 650,
-          padding: EdgeInsets.only(top: 300, left: 500),
-          child: Text(
-            'Hey there, the next meat is yet to launch!',
-            style: TextStyle(color: Colors.black, fontSize: 28),
-          ),
-        ),
-        Footer(),
-      ]),
-      floatingActionButton: FloatButton(),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('data').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView(
+            children: snapshot.data!.docs.map(
+              (document) {
+                return Container(
+                  alignment: Alignment.center,
+                  height: 650,
+                  child: Center(
+                      child: Text(
+                    document['text_nextmeat'],
+                    style: const TextStyle(color: Colors.black, fontSize: 28),
+                  )),
+                );
+              },
+            ).toList(),
+          );
+        },
+      ),
+      floatingActionButton: const FloatButton(),
     );
   }
 }

@@ -30,9 +30,11 @@ dependencies:
   cloud_firestore: ^3.1.15
   cupertino_icons: ^1.0.2
   email_validator: ^2.0.1
+  file_picker: ^4.6.1
+  firebase_analytics: ^9.1.9
   firebase_auth: ^3.3.18
-  firebase_core: ^1.17.0
-  firebase_storage: ^10.2.16
+  firebase_core: ^1.17.1
+  firebase_storage: ^10.2.17
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.1.0
@@ -40,6 +42,7 @@ dependencies:
   google_fonts: ^2.3.2
   google_sign_in: ^5.3.1
   provider: ^6.0.3
+  responsive_framework: ^0.2.0
   shared_preferences: ^2.0.15
   transparent_image: ^2.0.0
   url_launcher: ^6.1.2
@@ -50,6 +53,12 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.3
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
