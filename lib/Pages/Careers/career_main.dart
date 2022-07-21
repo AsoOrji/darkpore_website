@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:navigation_bar/sections/float_button.dart';
 
 class CareerMain extends StatelessWidget {
   const CareerMain({Key? key}) : super(key: key);
@@ -92,7 +91,6 @@ class CareerMain extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const FloatButton(),
     );
   }
 }

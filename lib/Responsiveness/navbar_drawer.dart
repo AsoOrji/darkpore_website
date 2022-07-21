@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Pages/About/about_main.dart';
-import 'package:navigation_bar/Pages/FoodNerve/foodnerve_main.dart';
-import 'package:navigation_bar/Pages/MediaPage/media_main.dart';
+import 'package:Darkpore/Pages/About/about_main.dart';
+import 'package:Darkpore/Pages/FoodNerve/foodnerve_main.dart';
+import 'package:Darkpore/Pages/MediaPage/media_main.dart';
 
 class NavBarDrawer extends StatefulWidget {
   const NavBarDrawer({

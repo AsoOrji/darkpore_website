@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:navigation_bar/Pages/Energy/energy_main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class Home3 extends StatefulWidget {
@@ -44,33 +43,6 @@ class _Home3State extends State<Home3> {
               padding: EdgeInsets.only(
                 top: 50,
               ),
-              // child: RichText(
-              //     textAlign: TextAlign.center,
-              //     text: const TextSpan(
-              //         text: 'Graphic Novel\n',
-              //         style: TextStyle(
-              //             fontSize: 40,
-              //             color: Colors.black,
-              //             fontWeight: FontWeight.w600),
-              //         children: [
-              //           TextSpan(
-              //             text: 'We\'re Driving ',
-              //             style: TextStyle(
-              //               fontSize: 17,
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.w100,
-              //             ),
-              //           ),
-              //           TextSpan(
-              //             text: 'Cultural Change',
-              //             style: TextStyle(
-              //               fontSize: 17,
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.w100,
-              //               decoration: TextDecoration.underline,
-              //             ),
-              //           ),
-              //         ])),
             ),
             Padding(
                 padding: const EdgeInsets.only(

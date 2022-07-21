@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Pages/About/about_main.dart';
-import 'package:navigation_bar/Pages/Careers/career_main.dart';
+import 'package:Darkpore/Pages/About/about_main.dart';
+import 'package:Darkpore/Pages/Careers/career_main.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -33,7 +34,9 @@ class Footer extends StatelessWidget {
             style: TextButton.styleFrom(
               foregroundColor: Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () {
+              launchURL('mailto:info@darkpore.com');
+            },
             child: const Text('Contact'),
           ),
           TextButton(
@@ -49,5 +52,13 @@ class Footer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  launchURL(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchURL(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

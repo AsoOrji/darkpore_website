@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/sections/float_button.dart';
 
 class EnergyMain extends StatelessWidget {
   const EnergyMain({Key? key}) : super(key: key);
@@ -33,7 +32,6 @@ class EnergyMain extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const FloatButton(),
     );
   }
 }

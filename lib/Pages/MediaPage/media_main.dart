@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Sections/PodSub/podsub_main.dart';
-import 'package:navigation_bar/Sections/float_button.dart';
-import 'package:navigation_bar/Sections/footer.dart';
-import 'package:navigation_bar/Sections/header.dart';
+import 'package:Darkpore/Sections/PodSub/podsub_main.dart';
+import 'package:Darkpore/Sections/footer.dart';
+import 'package:Darkpore/Sections/header.dart';
 
 import '../../Responsiveness/navbar_drawer.dart';
 import '../../Responsiveness/responsiveness_main.dart';
@@ -31,7 +30,6 @@ class MediaMain extends StatelessWidget {
         ),
       ),
       persistentFooterButtons: const [Footer()],
-      floatingActionButton: const FloatButton(),
     );
   }
 

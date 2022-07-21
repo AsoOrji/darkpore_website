@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Pages/FoodNerve/foodnerve_main.dart';
-import 'package:navigation_bar/Pages/HomePage/home1.dart';
-import 'package:navigation_bar/Pages/HomePage/home2.dart';
-import 'package:navigation_bar/Pages/HomePage/home3.dart';
-import 'package:navigation_bar/Pages/HomePage/home4.dart';
-import 'package:navigation_bar/Pages/MediaPage/media_main.dart';
-import 'package:navigation_bar/Responsiveness/navbar_drawer.dart';
-import 'package:navigation_bar/Sections/PodSub/podsub_main.dart';
-import 'package:navigation_bar/responsiveness/responsiveness_main.dart';
-import 'package:navigation_bar/sections/footer.dart';
+import 'package:Darkpore/Pages/FoodNerve/foodnerve_main.dart';
+import 'package:Darkpore/Pages/HomePage/home1.dart';
+import 'package:Darkpore/Pages/MediaPage/media_main.dart';
+import 'package:Darkpore/Responsiveness/navbar_drawer.dart';
+import 'package:Darkpore/Sections/PodSub/podsub_main.dart';
+import 'package:Darkpore/responsiveness/responsiveness_main.dart';
+import 'package:Darkpore/sections/footer.dart';
+
+import '../Pages/The Darkpore Shoe/test.dart';
 
 class Header extends StatefulWidget {
   const Header({Key? key}) : super(key: key);
@@ -32,10 +31,12 @@ class _HeaderState extends State<Header> {
         body: SingleChildScrollView(
           child: Column(
             children: const [
+              // TheDarkporeShow(),
+              Test(),
               Home1(),
-              Home2(),
-              Home4(),
-              Home3(),
+              // Home2(),
+              // Home4(),
+              // Home3(),
               Sub(),
               Footer()
             ],
@@ -75,7 +76,7 @@ class NewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      color: Colors.black,
+      color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.only(top: 15, bottom: 15),
         child: Row(
@@ -128,7 +129,20 @@ class DesktopNavBar extends StatelessWidget {
             );
           },
           child: const Text(
-            'FoodNerve',
+            'The Darkpore Show',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        SizedBox(width: screenSize.width / 50),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const FoodNerveMain()),
+            );
+          },
+          child: const Text(
+            'Advisory Council',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -141,7 +155,7 @@ class DesktopNavBar extends StatelessWidget {
             //         builder: (context) => const GraphicNovelMain()));
           },
           child: const Text(
-            'Graphic Novel',
+            'Farmilies',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -152,7 +166,7 @@ class DesktopNavBar extends StatelessWidget {
             //     MaterialPageRoute(builder: (context) => const EnergyMain()));
           },
           child: const Text(
-            'Energy Solutions',
+            'FoodNerve',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -163,7 +177,7 @@ class DesktopNavBar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const MediaMain()));
           },
           child: const Text(
-            'Media',
+            'Near Zero',
             style: TextStyle(color: Colors.white),
           ),
         ),

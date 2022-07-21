@@ -1,11 +1,11 @@
 {
-    "name": "navigation_bar",
-    "short_name": "navigation_bar",
+    "name": "Darkpore",
+    "short_name": "Darkpore",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Darkpore.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/sections/float_button.dart';
 
 class GraphicNovelMain extends StatelessWidget {
   const GraphicNovelMain({Key? key}) : super(key: key);
@@ -33,7 +32,6 @@ class GraphicNovelMain extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const FloatButton(),
     );
   }
 }

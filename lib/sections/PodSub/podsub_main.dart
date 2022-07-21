@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:navigation_bar/Sections/PodSub/is_mobile.dart';
-import 'package:navigation_bar/Sections/PodSub/is_desktop.dart';
+import 'package:Darkpore/Sections/PodSub/is_mobile.dart';
+import 'package:Darkpore/Sections/PodSub/is_desktop.dart';
 
 class Sub extends StatelessWidget {
   const Sub({Key? key}) : super(key: key);

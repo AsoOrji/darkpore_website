@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:navigation_bar/sections/header.dart';
+import 'Sections/header.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,10 +30,13 @@ class MyApp extends StatelessWidget {
         title: 'Darkpore',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFFEFEFEF),
-          fontFamily: GoogleFonts.kanit().fontFamily,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+                // scaffoldBackgroundColor: const Color(0x00000000),
+                // fontFamily: GoogleFonts.kanit().fontFamily,
+                // visualDensity: VisualDensity.adaptivePlatformDensity,
+                )
+            .copyWith(
+                textTheme:
+                    GoogleFonts.aBeeZeeTextTheme(Theme.of(context).textTheme)),
         home: const MainPage());
   }
 }
@@ -47,7 +50,7 @@ class MainPage extends StatelessWidget {
         body: StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        // return const CareerMain();
+        // return DemoPage();
         return const Header();
       },
     ));

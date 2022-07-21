@@ -4,5 +4,9 @@
         "configurations": [],
         "compounds": []
     },
-    "dart.flutterWebRenderer": "html"
+    "dart.flutterWebRenderer": "html",
+
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
 }
